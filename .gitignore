@@ -1,0 +1,7 @@
+node_modules
+src/private.json
+dist/index.html*
+
+.DS_Store
+package-lock.json
+*.sublime-*

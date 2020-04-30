@@ -1,0 +1,20 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "description": "my resume",
+  "main": "build.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/za-creature/resume.git"
+  },
+  "author": "Radu Dan",
+  "license": "MIT",
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "eslint": "^6.8.0",
+    "google-closure-compiler": "^20200315.0.0",
+    "postcss-cli": "^7.1.0",
+    "pug": "^2.0.4",
+    "pug-lint": "^2.6.0"
+  }
+}
