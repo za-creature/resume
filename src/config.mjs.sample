@@ -1,0 +1,13 @@
+export default {
+    'zalando': {
+        'name': '',
+        'url': ''
+    },
+    'planetary': '',
+    'leadpages': '',
+    'activesoft':  '',
+    'email': {
+        'destination': '',
+        'sender': ''
+    }
+}

@@ -64,10 +64,6 @@ html(lang='en')
 
                 dt
                     a(href='https://trello.com/') Trello, Inc
-                    //-|  (
-                    //-a(href=trello.url)
-                    //-    +hide(trello.name)
-                    //-| )
                 dd
                     | backend engineer (node.js, coffeescript)
                     br
@@ -75,10 +71,9 @@ html(lang='en')
 
                 dt
                     a(href='https://planetary.co/') Planetary, Inc
-                    //-|  (
-                    //- a(href=planetary.url)
-                    //-     +hide(planetary.name)
-                    //-| )
+                    |  (
+                    +hide(planetary)
+                    | )
                 dd
                     | software developer (react, nginx, php, python)
                     br
@@ -159,29 +154,28 @@ html(lang='en')
         footer
             br
             br
-            form(action='contact' method='post')
-                fieldset
-                    legend get in touch
-                    dl
-                        dt: label to
-                        dd.visible
-                            span.print 📫 
-                            +hide(email)
-                            br.screen
-                            a.screen(href='key.gpg')= 'ee1e 60f7 4f2b 6fb1 67e7 e211 a23c e315 be72 69bb'
-                        dt: label(for='subject') subject
-                        dd: input(type='text' size='40' placeholder='what\'s this about'
-                                  name='subject' id='subject')
-                        dt: label(for='message') message
-                        dd: textarea(rows='10' cols='60' placeholder='hi,'
-                                     name='message' id='message')
+            fieldset
+                legend get in touch
+                dl
+                    dt: label to
+                    dd.visible
+                        span.print 📫 
+                        +hide(email.destination)
+                        br.screen
+                        a.screen(href='key.gpg')= 'ee1e 60f7 4f2b 6fb1 67e7 e211 a23c e315 be72 69bb'
+                    dt: label(for='subject') subject
+                    dd: input(type='text' id='subject'
+                              size='40' placeholder='what\'s this about')
+                    dt: label(for='message') message
+                    dd: textarea(id='message'
+                                 rows='10' cols='60' placeholder='hi,')
 
-                        dt &nbsp;
-                        dd
-                            label do I know where to reply?
-                            br
-                            button(type='submit') send
-        img.print.right(alt='' width=132 height=132 src='qr.svg')
+                    dt &nbsp;
+                    dd
+                        label do I know where to reply?
+                        br
+                        button(id='submit') send
+        img.print.right(alt='' width=132 height=132 src='qr.svgz')
         h3#references.print links
         script(type='text/javascript')
             include:js script.js

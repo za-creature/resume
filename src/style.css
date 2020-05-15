@@ -102,7 +102,8 @@ button {
 
 @font-face {
     font-family: 'Zilla Slab';
-    src: url('zilla/ZillaSlab-Light.otf');
+    src: url('zilla/ZillaSlab-Light.woff2') format('woff2'),
+         url('zilla/ZillaSlab-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -110,7 +111,8 @@ button {
 
 @font-face {
     font-family: 'Zilla Slab';
-    src: url('zilla/ZillaSlab-LightItalic.otf');
+    src: url('zilla/ZillaSlab-LightItalic.woff2') format('woff2'),
+         url('zilla/ZillaSlab-LightItalic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
     font-display: swap;
@@ -132,7 +134,8 @@ button {
 
 @font-face {
     font-family: 'Zilla Slab';
-    src: url('zilla/ZillaSlab-Medium.otf');
+    src: url('zilla/ZillaSlab-Medium.woff2') format('woff2'),
+         url('zilla/ZillaSlab-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
     font-display: swap;

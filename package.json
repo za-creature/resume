@@ -7,14 +7,24 @@
     "type": "git",
     "url": "git+https://github.com/za-creature/resume.git"
   },
+  "scripts": {
+    "lint": "eslint --ext=.js,.mjs ."
+  },
   "author": "Radu Dan",
   "license": "MIT",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "bliss": "file:../bliss",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
     "google-closure-compiler": "^20200315.0.0",
     "postcss-cli": "^7.1.0",
     "pug": "^2.0.4",
-    "pug-lint": "^2.6.0"
+    "pug-lint": "^2.6.0",
+    "rollup": "^2.8.2"
+  },
+  "eslintConfig": {},
+  "dependencies": {
+    "rollup-plugin-node-resolve": "^5.2.0"
   }
 }

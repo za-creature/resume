@@ -27,7 +27,7 @@ function make_responsive(img, id) {
     srcset.split(',').forEach(function(x) {
         x = x.split(' ')
         var src = x[0]
-        var res = parseInt(x[1].slice(0, -1))|0
+        var res = parseInt(x[1].slice(0, -1), 10)|0
         if(res > max) {
             print.src = src
             max = res
@@ -58,7 +58,7 @@ function begin_reference() {
     var pos = document.getElementById('references')
     pos.parentNode.insertBefore(references, pos.nextSibling)
 }
-function add_reference(link, id) {
+function add_reference(link) {
     if(link.href.slice(0, 4) == 'http') {
         var ref = el('sup')
         ref.className = 'print'
@@ -77,3 +77,23 @@ function add_reference(link, id) {
 commit_responsive()
 begin_reference();
 [].forEach.call(document.getElementsByTagName('a'), add_reference)
+
+
+// entry-level captcha requiring use of javascript to submit the form
+var $ = document.getElementById.bind(document)
+var submit = $('submit')
+submit.onclick = function() {
+    var status = el('span')
+    submit.parentNode.replaceChild(status, submit)
+    var message = $('message')
+    if(message.value.length > 10) {
+        var body = new FormData()
+        body.append('subject', $('subject').value)
+        body.append('message', message.value)
+        fetch('/contact', {'method': 'POST', 'body': body})
+        .then(function(res) { if(!res.ok) throw new Error() })
+        .then(function() {status.innerText = 'Your message was sent. I will get back to you as soon as possible'},
+              function() {status.innerText = 'Sorry, looks like something went wrong. Please send me an email directly'})
+    } else message.focus()
+    return false
+}

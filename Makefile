@@ -1,22 +1,29 @@
+include .env
 default:
-	NODE_ENV=local node build.js
-
-
-production:
-	NODE_ENV=production node build.js
-	zopfli dist/index.html
-	brotli -f dist/index.html
+	node --experimental-modules build.mjs
 
 
 deps:
-	brew install brotli
-	brew install zopfli
+	#brew install brotli
+	#brew install zopfli
 	brew install optipng
 
 
-serve:
-	cd dist && python -m SimpleHTTPServer 8080
+local: default
+	node ../cf-emu/cli.js -M metadata.mjs
 
 
+production: default
+	mkdir -p .deploy
+	node_modules/.bin/rollup -c
+	node_modules/.bin/google-closure-compiler \
+		-O ADVANCED \
+		--js=.deploy/cf_worker.js \
+		--js_output_file=.deploy/cf_worker.min.js \
+		--externs=externs.js \
+		--language_out=NO_TRANSPILE
+
+
+.EXPORT_ALL_VARIABLES:
 deploy: production
-	rsync -rP dist/ $(DOMAIN):/var/www/html/$(DOMAIN)/
+	node --experimental-modules metadata.mjs .deploy/cf_worker.min.js

@@ -1,0 +1,28 @@
+import metadata from 'bliss/util/metadata'
+
+export default metadata('./src/server.mjs', [
+    // add your binding objects to this list, replacing "part": with "file"
+    // if you're using wasm modules or are otherwise storing data in files
+    // e.g.
+    // {type: 'plain_text', name: 'message', text: 'hello world'}
+    // {type: 'text_blob', name: 'dictionary', file: 'assets/dictionary.json'}
+    //
+    // WARNING!
+    // If you want to access these fields as global variables (e.g. NAME instead
+    // of self['NAME']), you must either switch to simple optimizations in the
+    // google closure compiler, or define them as variables in externs.js so
+    // the compiler knows not to rename their references.
+    {
+        'type': 'plain_text',
+        'name': 'AWS_REGION',
+        'text': 'us-east-1'
+    }, {
+        'type': 'secret_text',
+        'name': 'AWS_ACCESS_KEY_ID',
+        'text': 'AKIAIOSFODNN7EXAMPLE',
+    }, {
+        'type': 'secret_text',
+        'name': 'AWS_SECRET_ACCESS_KEY',
+        'text': 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
+    }
+])
