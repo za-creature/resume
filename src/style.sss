@@ -1,0 +1,132 @@
+// Reset
+html, header, main, aside, footer, ul, ol, li, dl, dt, dd, p, h2, h3
+    margin: 0
+    padding: 0
+body
+    max-width: 800px
+    margin: 0 auto
+    padding: 25px
+    font:
+        weight: 300
+        family: Zilla Slab, sans-serif
+    overflow: visible
+h2, h3, legend, button
+    font-weight: 500
+
+// Layout
+header
+    p
+        display: flex
+        align-items: center
+        justify-content: left
+    img, span
+        flex: none
+        max-width: 100%
+    img
+        margin-right: 10px
+    small
+        display: block
+        padding-bottom: 6px
+dd
+    margin-bottom: 10px
+h3
+    margin: 15px 0 5px 0
+
+footer
+    page-break-before: always
+    max-width: 600px
+    margin: 0 auto
+fieldset
+    border-radius: 10px
+input, textarea
+    width: 100%
+    resize: vertical
+    box-sizing: border-box
+button
+    padding: 4px
+    margin: 6px 0
+.right
+    float: right
+.night-mode
+    display: none
+
+
+// Responsive rules
+@media print
+    a, a:active, a:visited
+        color: black
+        text-decoration: none
+    body
+        padding: 25px 50px
+    form, fieldset
+        margin: 0
+        padding: 0
+        border: none
+    footer dt, footer dd, legend
+        display: none
+    footer dd.visible
+        display: block
+    .screen
+        display: none
+@media screen
+    a
+        text-decoration: none
+    a:hover
+        text-decoration: underline
+    .print
+        display: none
+    ul.tales
+        max-width: 400px
+@media screen and (min-width: 400px)
+    footer
+        dt
+            float: left
+            clear: left
+            width: 80px
+            margin-right: 20px
+            text-align: right
+        dd
+            display: block
+            overflow: hidden
+@media print,
+@media screen and (min-width: 400px) and (max-width: 699px)
+    section
+        display: inline-block
+        width: 50%
+        vertical-align: top
+@media screen and (min-width: 700px)
+    main
+        width: 400px
+        float: left
+    aside
+        width: 200px
+        float: right
+    footer
+        clear: both
+
+
+// Zilla
+@font-face
+    src: url('ZillaSlab-Light.woff2') format('woff2'),
+         url('ZillaSlab-Light.woff') format('woff')
+    font:
+        family: 'Zilla Slab'
+        weight: 300
+        style: normal
+        display: swap
+@font-face
+    src: url('ZillaSlab-LightItalic.woff2') format('woff2'),
+         url('ZillaSlab-LightItalic.woff') format('woff')
+    font:
+        family: 'Zilla Slab'
+        weight: 300
+        style: italic
+        display: swap
+@font-face
+    src: url('ZillaSlab-Medium.woff2') format('woff2'),
+         url('ZillaSlab-Medium.woff') format('woff')
+    font:
+        family: 'Zilla Slab'
+        weight: 500
+        style: normal
+        display: swap

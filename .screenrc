@@ -1,0 +1,7 @@
+split
+split -v
+screen -t Rollup npx rollup -cw
+focus
+screen -t Webserver npx bliss-router -w
+focus
+screen -t Shell $SHELL -c "$SHELL; screen -p0 -X stuff ^C; screen -p1 -X stuff ^C; screen -p1 -X stuff ^C"

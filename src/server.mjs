@@ -1,35 +1,17 @@
 import data from './config'
+import index from './index.pug'
 
-import router, {post, response} from 'bliss'
-import aws, {aws_rest} from 'bliss/aws'
-import asset from 'bliss/util/assets'
+import router, {post, response} from 'bliss-router'
+import aws, {aws_rest} from 'bliss-router/aws'
+import asset from 'bliss-router/assets'
 
 
 // static assets
-asset.source = 'assets/'
-asset.prefix = '/'
-asset('robots.txt', 'text/plain')
-asset('favicon.ico', 'image/x-icon')
-asset('key.gpg', {
-    'content-type': 'application/pgp-keys',
-    'content-disposition': 'attachment; filename=radudan.gpg'
-})
+asset('', STATIC_ASSETS)
 
-// fonts
-for(let variant of ['Light', 'LightItalic', 'Medium']) {
-    asset(`zilla/ZillaSlab-${variant}.woff2`, 'font/woff')
-    asset(`zilla/ZillaSlab-${variant}.woff`, 'font/woff')
-}
-
-// images
-asset('unibuc-1x.png', 'image/png')
-asset('unibuc-2x.png', 'image/png')
-asset('unibuc-3x.png', 'image/png')
-asset('unibuc-4x.png', 'image/png')
-asset('qr.svgz', 'image/svg+xml')
 
 // homepage
-asset('index.html', 'text/html', '/')
+asset('', index(data), 'text/html')
 
 
 // contact form

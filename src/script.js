@@ -4,10 +4,17 @@ if(console && console.log) {
 }
 
 
-var el = document.createElement.bind(document)
+function doc(name) {
+    return document[name].bind(document)
+}
+var $ = doc('getElementById')
+var el = doc('createElement')
+function all(tag, cb) {
+    [].forEach.call(document.getElementsByTagName(tag), cb)
+}
 
 
-// make images responsive cross-browser and use highest resolution in print
+// make images predictably responsive cross-browser and use highest resolution in print
 var queries = {}
 function make_responsive(img, id) {
     var srcset = img.getAttribute('srcset')
@@ -53,10 +60,10 @@ function commit_responsive() {
 // build a list of links to show in print
 var references
 function begin_reference() {
-    references = el('ol') 
+    references = el('ol')
     references.className = 'print'
-    var pos = document.getElementById('references')
-    pos.parentNode.insertBefore(references, pos.nextSibling)
+    var refs = $('references')
+    refs.parentNode.insertBefore(references, refs.nextSibling)
 }
 function add_reference(link) {
     if(link.href.slice(0, 4) == 'http') {
@@ -72,28 +79,36 @@ function add_reference(link) {
 }
 
 
-// TODO: add support for live collection
-[].forEach.call(document.getElementsByTagName('img'), make_responsive)
+// TODO: add support for live collections
+all('img', make_responsive)
 commit_responsive()
-begin_reference();
-[].forEach.call(document.getElementsByTagName('a'), add_reference)
+begin_reference()
+all('a', add_reference)
 
 
-// entry-level captcha requiring use of javascript to submit the form
-var $ = document.getElementById.bind(document)
+// entry-level captcha requiring use of javascript + fetch to submit the form
+// only intended to prevent cheap spam
 var submit = $('submit')
 submit.onclick = function() {
-    var status = el('span')
-    submit.parentNode.replaceChild(status, submit)
-    var message = $('message')
-    if(message.value.length > 10) {
-        var body = new FormData()
-        body.append('subject', $('subject').value)
-        body.append('message', message.value)
-        fetch('/contact', {'method': 'POST', 'body': body})
-        .then(function(res) { if(!res.ok) throw new Error() })
-        .then(function() {status.innerText = 'Your message was sent. I will get back to you as soon as possible'},
-              function() {status.innerText = 'Sorry, looks like something went wrong. Please send me an email directly'})
-    } else message.focus()
+    function cb(err) {
+        status.innerText = err
+            ? 'Sorry, looks like something went wrong. Please send me an email directly'
+            : 'Your message was sent. I will get back to you as soon as possible'
+    }
+    try {
+        var status = el('span')
+        submit.parentNode.replaceChild(status, submit)
+        var message = $('message')
+        if(message.value.length > 10) {
+            var body = new FormData()
+            body.append('subject', $('subject').value)
+            body.append('message', message.value)
+            fetch('/contact', {'method': 'POST', 'body': body})
+            .then(function(res) { if(!res.ok) throw new Error() })
+            .then(cb, cb)
+        } else message.focus()
+    } catch(err) {
+        cb(err)
+    }
     return false
 }

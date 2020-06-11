@@ -1,10 +1,7 @@
 .deploy
-node_modules
-src/config.mjs
-dist/index.html*
-
 .DS_Store
 .env
-package-lock.json
-metadata.mjs
 *.sublime-*
+node_modules
+package-lock.json
+src/config.mjs

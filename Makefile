@@ -1,29 +1,28 @@
+.EXPORT_ALL_VARIABLES:
 include .env
+
+
 default:
-	node --experimental-modules build.mjs
+	/usr/local/bin/screen -c.screenrc
+
+
+clean:
+	rm -Rf .deploy/*
+	mkdir -p .deploy
+
+
+build: clean
+	npx rollup -c
+
+
+local: build
+	npx bliss-router
+
+
+deploy:
+	NODE_ENV=production npx rollup -c
+	NODE_ENV=production npx bliss-router -dw
 
 
 deps:
-	#brew install brotli
-	#brew install zopfli
-	brew install optipng
-
-
-local: default
-	node ../cf-emu/cli.js -M metadata.mjs
-
-
-production: default
-	mkdir -p .deploy
-	node_modules/.bin/rollup -c
-	node_modules/.bin/google-closure-compiler \
-		-O ADVANCED \
-		--js=.deploy/cf_worker.js \
-		--js_output_file=.deploy/cf_worker.min.js \
-		--externs=externs.js \
-		--language_out=NO_TRANSPILE
-
-
-.EXPORT_ALL_VARIABLES:
-deploy: production
-	node --experimental-modules metadata.mjs .deploy/cf_worker.min.js
+	npm i

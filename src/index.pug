@@ -22,9 +22,10 @@ html(lang='en')
         meta(charset='utf-8')
         meta(name='robots' content='noindex,nofollow')
         meta(name='viewport' content='width=device-width,initial-scale=1.0')
-        title Radu Dan - Resumé
+        link(rel='shortcut icon' href='/favicon.png')
+        title Radu Dan
         style(type='text/css')
-            include:css style.css
+            include:css style.sss
     body
         header
             a.screen.right(href='javascript:print()')
@@ -38,7 +39,7 @@ html(lang='en')
             h2
                 | Radu Sergiu Dan
                 br
-                small 30, software architect, citizen
+                small 31, software architect, citizen
             p(title='Virtute et sapientia')
                 img(alt='' align='middle'
                     width=44 height=50
@@ -54,8 +55,8 @@ html(lang='en')
                 dt
                     a(href='https://en.zalando.de/') Zalando SE
                     |  (
-                    a(href=zalando.url)
-                        +hide(zalando.name)
+                    a(href=self['zalando'].url)
+                        +hide(self['zalando'].name)
                     | )
                 dd
                     | ML software engineer (python, spark, sql, aws)
@@ -72,7 +73,7 @@ html(lang='en')
                 dt
                     a(href='https://planetary.co/') Planetary, Inc
                     |  (
-                    +hide(planetary)
+                    +hide(self['planetary'])
                     | )
                 dd
                     | software developer (react, nginx, php, python)
@@ -82,7 +83,7 @@ html(lang='en')
                 dt
                     a(href='https://leadpages.net/') Ave81, Inc
                     |  (
-                    +hide(leadpages)
+                    +hide(self['leadpages'])
                     | )
                 dd
                     | fullstack developer (python, html, css, js, gcloud)
@@ -92,7 +93,7 @@ html(lang='en')
                 dt
                     a(href='http://activesoft.ro/') Activesoft SRL
                     |  (
-                    +hide(activesoft)
+                    +hide(self['activesoft'])
                     | )
                 dd
                     | infrastructure engineer (linux, python, c)
@@ -102,17 +103,15 @@ html(lang='en')
             h3 tales
             ul.tales
                 li
-                    | built a social networking platform so I could go to 
-                    a(href='https://infoeducatie.ro/') summer&nbsp;camp 
+                    | built a social networking platform so I could go to
+                    a(href='https://infoeducatie.ro/')  summer&nbsp;camp
                     small
-                        | (2006&nbsp;-&nbsp;2007)
-                    br.night-mode
-                    span.night-mode I did not get lucky 😞
+                        |  (2006&nbsp;-&nbsp;2007)
                 li
-                    | twice silver medalist at the  
-                    a(href='https://oni.ro') computer&nbsp;science&nbsp;nationals 
+                    | twice silver medalist at the
+                    a(href='https://oni.ro')  computer&nbsp;science&nbsp;nationals
                     small
-                        | (2005&nbsp;-&nbsp;2006)
+                        |  (2005&nbsp;-&nbsp;2006)
 
 
         aside
@@ -123,7 +122,7 @@ html(lang='en')
                         a(href='https://en.wikipedia.org/wiki/Cluj-Napoca') Cluj-Napoca
                         small.right &nbsp;🏠
                     li Berlin
-                    li: a(href='https://en.wikipedia.org/wiki/Romania') București
+                    li: a(href='https://en.wikipedia.org/wiki/Bucharest') București
                     li(title='hometown')
                         a(href='https://en.wikipedia.org/wiki/Aiud') Aiud
                         small.right &nbsp;🍼
@@ -136,20 +135,6 @@ html(lang='en')
                     li music
                     li design
                     li travel
-                    li.night-mode: a(href='https://www.fullthrottle.ro/revenue/') open source
-
-            section
-                h3 strengths
-                ul
-                    li: a(href='https://github.com/za-creature/bahnhof/') network engineering
-                    li: a(href='https://github.com/za-creature/eso/') multimedia
-                    li: a(href='https://github.com/za-creature/bliss/') computer vision
-
-            section
-                h3 mistakes
-                ul
-                    li: a(href='https://github.com/clutchski/coffeelint/issues/551/') pride
-                    li: a(href='https://github.com/za-creature/double-latte/') envy
 
         footer
             br
@@ -159,10 +144,11 @@ html(lang='en')
                 dl
                     dt: label to
                     dd.visible
-                        span.print 📫 
-                        +hide(email.destination)
+                        span.print 📫&nbsp;
+                        +hide(self['email']['destination'])
                         br.screen
-                        a.screen(href='key.gpg')= 'ee1e 60f7 4f2b 6fb1 67e7 e211 a23c e315 be72 69bb'
+                        a.screen(href='key.gpg')= 'fb45 e569 76fd 2218 b34d 1302 13a6 24ec 8328 d224'
+
                     dt: label(for='subject') subject
                     dd: input(type='text' id='subject'
                               size='40' placeholder='what\'s this about')
@@ -175,7 +161,7 @@ html(lang='en')
                         label do I know where to reply?
                         br
                         button(id='submit') send
-        img.print.right(alt='' width=132 height=132 src='qr.svgz')
+        img.print.right(alt='' width=132 height=132 src='qr.svg')
         h3#references.print links
         script(type='text/javascript')
             include:js script.js

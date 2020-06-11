@@ -2,7 +2,6 @@
   "name": "resume",
   "version": "1.0.0",
   "description": "my resume",
-  "main": "build.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/za-creature/resume.git"
@@ -13,18 +12,23 @@
   "author": "Radu Dan",
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "bliss": "file:../bliss",
-    "cssnano": "^4.1.10",
-    "eslint": "^6.8.0",
-    "google-closure-compiler": "^20200315.0.0",
-    "postcss-cli": "^7.1.0",
-    "pug": "^2.0.4",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "cssnano": "^5.0.5",
+    "eslint": "^7.28.0",
+    "google-closure-compiler": "^20210601.0.0",
+    "postcss": "^8.3.0",
+    "postcss-cli": "^8.3.1",
+    "postcss-nested": "^5.0.5",
+    "postcss-nested-props": "^2.0.0",
+    "pug": "^3.0.2",
     "pug-lint": "^2.6.0",
-    "rollup": "^2.8.2"
+    "rollup": "^2.51.0",
+    "rollup-plugin-pug": "^1.1.1",
+    "stylelint": "^13.13.1",
+    "sugarss": "^3.0.3"
   },
-  "eslintConfig": {},
   "dependencies": {
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "bliss-router": "^0.9.1",
+    "pug-runtime": "^3.0.1"
   }
 }

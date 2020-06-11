@@ -1,13 +1,13 @@
 export default {
     'zalando': {
-        'name': '',
-        'url': ''
+        'name': '[Name redacted]',
+        'url': 'https://example.com'
     },
-    'planetary': '',
-    'leadpages': '',
-    'activesoft':  '',
+    'planetary': '[Name and email redacted]',
+    'leadpages': '[Name and email redacted]',
+    'activesoft':  '[Name and email redacted]',
     'email': {
-        'destination': '',
-        'sender': ''
+        'destination': '[Email redacted]',
+        'sender': 'mailbot@example.com'
     }
 }
